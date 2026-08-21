@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resident Evil 2 - MOD Latino PS4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.7;min-height:100vh}
+.bg-overlay{position:fixed;inset:0;background:url('assets/background.webp') center/cover no-repeat;opacity:.08;z-index:-1;pointer-events:none}
+.container{max-width:820px;margin:0 auto;padding:40px 20px 60px;zoom:1.25}
+.header{text-align:center;margin-bottom:50px}
+.header img{width:100%;max-width:700px;height:auto;border-radius:8px;filter:drop-shadow(0 0 20px rgba(180,30,30,.3))}
+.note-box{background:linear-gradient(135deg,rgba(180,30,30,.15),rgba(100,10,10,.1));border-left:4px solid #c0392b;border-radius:0 8px 8px 0;padding:18px 24px;margin-bottom:50px;font-size:14px;color:#ccc;backdrop-filter:blur(6px)}
+.note-box strong{color:#e74c3c}
+.section-title{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:2px;text-align:center;margin:50px 0 30px;color:#f0f0f0}
+.section-title::after{content:'';display:block;width:80px;height:3px;background:linear-gradient(90deg,#c0392b,#e74c3c);margin:12px auto 0;border-radius:2px}
+.method-card{background:rgba(20,20,20,.85);border:1px solid rgba(192,57,43,.25);border-radius:12px;padding:35px 30px;margin-bottom:40px;backdrop-filter:blur(10px)}
+.method-card h2{font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;color:#e74c3c;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+.method-card .subtitle{font-size:13px;color:#999;margin-bottom:25px;line-height:1.5}
+.files-section{margin-bottom:30px}
+.files-section h3{font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;color:#f0f0f0;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.files-section h3::after{content:'';display:block;width:40px;height:2px;background:#c0392b;margin-top:4px;border-radius:1px}
+.file-list{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.file-tag{background:rgba(192,57,43,.12);border:1px solid rgba(192,57,43,.2);border-radius:6px;padding:6px 14px;font-size:13px;color:#ccc;font-weight:500}
+.step{margin-bottom:28px;padding-left:50px;position:relative}
+.step-number{position:absolute;left:0;top:0;width:36px;height:36px;background:linear-gradient(135deg,#c0392b,#96281b);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:16px;color:#fff;flex-shrink:0}
+.step-content h3{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;color:#f5f5f5;margin-bottom:8px}
+.step-content p{font-size:14px;color:#bbb;margin-bottom:10px}
+.step-content code{background:rgba(192,57,43,.15);color:#e74c3c;padding:2px 8px;border-radius:4px;font-size:13px;font-family:'Courier New',monospace}
+.step-image{margin:15px 0;text-align:center}
+.step-image img{max-width:100%;border-radius:8px;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.collapsible-wrapper{margin:30px 0 10px}
+.collapsible-btn{width:100%;background:rgba(20,20,20,.85);border:1px solid rgba(192,57,43,.3);border-radius:10px;padding:18px 24px;color:#f0f0f0;font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;text-transform:uppercase;letter-spacing:2px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all .3s ease;backdrop-filter:blur(10px)}
+.collapsible-btn:hover{background:rgba(192,57,43,.15);border-color:rgba(192,57,43,.5)}
+.collapsible-btn .arrow{font-size:14px;transition:transform .3s ease;color:#e74c3c}
+.collapsible-btn.active .arrow{transform:rotate(180deg)}
+.collapsible-btn.active{border-radius:10px 10px 0 0;border-bottom-color:transparent}
+.collapsible-content{display:none;background:rgba(20,20,20,.85);border:1px solid rgba(192,57,43,.3);border-top:none;border-radius:0 0 10px 10px;padding:25px 30px;backdrop-filter:blur(10px)}
+.collapsible-content.open{display:block}
+.links-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+@media(max-width:600px){.links-grid{grid-template-columns:1fr}.videos-grid{grid-template-columns:1fr}}
+.link-box{background:rgba(20,20,20,.85);border:1px solid rgba(192,57,43,.2);border-radius:10px;padding:20px;text-align:center;transition:all .3s ease;backdrop-filter:blur(10px)}
+.link-box:hover{border-color:rgba(192,57,43,.5);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.3)}
+.link-box h3{font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#e74c3c;margin-bottom:8px}
+.link-box .placeholder{font-size:13px;color:#666;font-style:italic}
+.link-box a{display:inline-block;margin-top:10px;padding:8px 20px;background:linear-gradient(135deg,#c0392b,#96281b);color:#fff;text-decoration:none;border-radius:6px;font-size:13px;font-weight:500;transition:all .3s ease}
+.link-box a:hover{background:linear-gradient(135deg,#e74c3c,#c0392b);box-shadow:0 0 15px rgba(192,57,43,.4)}
+.credits-section{text-align:center;margin:50px 0}
+.credits-section img{max-width:500px;width:100%;border-radius:10px;filter:drop-shadow(0 0 15px rgba(180,30,30,.2));margin:15px 0}
+.cast-list{text-align:left;max-width:600px;margin:20px auto;font-size:13.5px;color:#bbb;line-height:2}
+.cast-list .role{color:#e74c3c;font-weight:600}
+.footer-links{text-align:center;margin:50px 0 20px;padding-top:30px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-links a{display:inline-block;margin:8px 12px;padding:10px 24px;background:rgba(20,20,20,.85);border:1px solid rgba(192,57,43,.25);border-radius:8px;color:#e74c3c;text-decoration:none;font-family:'Oswald',sans-serif;font-size:14px;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:all .3s ease}
+.footer-links a:hover{background:rgba(192,57,43,.15);border-color:#c0392b;transform:translateY(-1px)}
+.copyright{text-align:center;font-size:12px;color:#555;margin-top:30px}
+</style>
+</head>
+<body>
+<div class="bg-overlay"></div>
+<div class="container">
+
+  <div class="header">
+    <img src="assets/banner-header.webp" alt="Resident Evil 2 MOD Latino PS4">
+  </div>
+
+  <div style="text-align:center;margin-bottom:20px">
+    <span style="font-family:'Oswald',sans-serif;font-size:14px;color:#888;text-transform:uppercase;letter-spacing:2px">PORT by KiZeo</span>
+    <span style="display:inline-flex;align-items:center;gap:12px;margin-left:14px;vertical-align:middle">
+      <a href="https://x.com/KiZeo0" target="_blank" title="X / Twitter"><img src="assets/redes/x.webp" alt="X" style="width:22px;height:22px;filter:grayscale(1) brightness(1.5);transition:filter .3s"></a>
+      <a href="https://www.youtube.com/@kizeo0/videos" target="_blank" title="YouTube"><img src="assets/redes/yt.webp" alt="YouTube" style="width:22px;height:22px;filter:grayscale(1) brightness(1.5);transition:filter .3s"></a>
+      <a href="https://github.com/kizeo0" target="_blank" title="GitHub"><img src="assets/redes/git.webp" alt="GitHub" style="width:22px;height:22px;filter:grayscale(1) brightness(1.5);transition:filter .3s"></a>
+    </span>
+  </div>
+
+  <div class="note-box">
+    <strong>IMPORTANTE:</strong> Es necesario seleccionar <strong>"Inglés"</strong> en el menú de diálogos, ya que este MOD reemplaza todos los audios en Inglés por los de Español Latino.
+  </div>
+
+  <div class="section-title">Métodos de Instalación</div>
+
+  <!-- METODO A -->
+  <div class="method-card">
+    <h2>A. Mediante el Plugin de AFR</h2>
+    <p class="subtitle">Recomendado para quienes ya tienen el juego o suelen colocar más mods.<br>No importa ni el ID ni la versión del juego.</p>
+
+    <div class="files-section">
+      <h3>Archivos</h3>
+      <div style="margin-top:16px">
+        <h3>Plugins PKG</h3>
+        <div class="file-list">
+          <span class="file-tag">Gofile</span>
+          <span class="file-tag">Akirabox</span>
+          <span class="file-tag">Mediafire</span>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <h3>Mod Latino</h3>
+        <div class="file-list">
+          <span class="file-tag">Gofile</span>
+          <span class="file-tag">Akirabox</span>
+          <span class="file-tag">Mediafire</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapsible-wrapper">
+      <button class="collapsible-btn" onclick="toggleCollapsible(this)">
+        Guía Rápida
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div class="collapsible-content">
+        <p style="color:#999;font-size:13px;margin-bottom:20px">Esto es una guía rápida, pero recomiendo seguir el video tutorial de lanzamiento, donde se muestra desde cero instalando primero los plugins y luego el mod.</p>
+
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Crear archivo plugins.ini</h3>
+            <p>Entra en <a href="https://www.mediafire.com/file/okj0j4qxb9yxlrq/PS4-Xplorer+2.0_v2.07.pkg/file" target="_blank" style="color:#e74c3c;text-decoration:underline;text-underline-offset:3px">PS4 Explorer</a> y en la carpeta <code>/data/GoldHen/</code> crea un archivo vacío llamado <code>plugins.ini</code>. Esto permite que la PS4 reconozca el plugin.</p>
+            <div class="step-image"><img src="assets/step-1-ps4explorer.webp" alt="PS4 Explorer"></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Instalar el PKG de Plugins</h3>
+            <p>Instala el <code>plugins by kizeo.pkg</code>, ejecútalo y espera a que termine de copiar todos los archivos.</p>
+            <div class="step-image"><img src="assets/step-2-plugins-folder.webp" alt="Plugins folder"></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Editar plugins.ini</h3>
+            <p>Ingresa a <code>/data/GoldHen/</code> — ahora tendrás carpetas nuevas <code>(AFR)</code> y <code>(plugins)</code>. Edita <code>plugins.ini</code> y escribe al final:</p>
+            <p><code>[CUSAXXXXX]</code> <em style="color:#888">(tu ID de Resident Evil 2)</em></p>
+            <p><code>/data/GoldHen/plugins/afr.prx</code></p>
+            <p>Ejemplo con mi ID:</p>
+            <p><code>[CUSA09171]</code></p>
+            <p><code>/data/GoldHen/plugins/afr.prx</code></p>
+            <div class="step-image"><img src="assets/step-3-plugins-ini-config.webp" alt="plugins.ini config"></div>
+            <div class="step-image"><img src="assets/step-3-plugins-ini.webp" alt="plugins.ini edit"></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Crear carpeta CUSA en AFR</h3>
+            <p>Entra en la carpeta <code>AFR</code> y crea una carpeta con el CUSA de tu juego (ej: <code>CUSA09171</code>). Coloca ahí los archivos del mod latino:</p>
+            <p><code>re_chunk_000.pak.patch_00X.pak</code></p>
+            <p><code>re_chunk_001.pak.patch_00X.pak</code></p>
+            <div class="step-image"><img src="assets/step-4-afr-folder.webp" alt="AFR folder"></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>Renombrar los archivos según tu versión</h3>
+            <p>Renombra ambos archivos de acuerdo a la versión de tu juego + 1.</p>
+            <p>Ejemplo: Si tu juego es <strong>v1.07</strong> &rarr; <code>7 + 1 = 8</code></p>
+            <p>Antes:</p>
+            <p><code>re_chunk_000.pak.patch_00<b style="color:#e74c3c">X</b>.pak</code></p>
+            <p><code>re_chunk_001.pak.patch_00<b style="color:#e74c3c">X</b>.pak</code></p>
+            <p>Después:</p>
+            <p><code>re_chunk_000.pak.patch_00<b style="color:#2ecc71">8</b>.pak</code></p>
+            <p><code>re_chunk_001.pak.patch_00<b style="color:#2ecc71">8</b>.pak</code></p>
+            <p style="color:#888;font-size:13px">Si tu juego es v1.06 &rarr; reemplaza X por 7</p>
+            <div class="step-image"><img src="assets/step-5-rename-files.webp" alt="Rename files"></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <h3>Activar GoldHen y ejecutar</h3>
+            <p>Marca la primera casilla de <strong>GoldHen</strong> en la sección de Plugins y ejecuta el juego.</p>
+            <div class="step-image"><img src="assets/step-6-goldhen-plugin.webp" alt="GoldHen plugin"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- METODO B -->
+  <div class="method-card">
+    <h2>B. Juego Completo Ya Editado</h2>
+    <p class="subtitle">Este es el juego completo que ya incluye el MOD LATINO.</p>
+    <div style="text-align:center;margin:20px 0">
+      <img src="assets/section-b-icon.webp" alt="MOD Latino Icon" style="max-width:140px;border-radius:10px;filter:drop-shadow(0 0 15px rgba(180,30,30,.3))">
+    </div>
+    <p style="text-align:center;color:#ccc;font-size:14px">
+      <strong style="color:#e74c3c">ID:</strong> CUSA09171<br>
+      <strong style="color:#e74c3c">Versión:</strong> 1.07 (1.08 con el mod)
+    </p>
+    <p style="text-align:center;color:#888;font-size:13px;margin-top:10px">
+      La actualización en realidad es 1.07, pero como incluye el mod latino, pasa directamente a 1.08.
+    </p>
+  </div>
+
+  <!-- ENLACES -->
+  <div class="section-title">Enlaces</div>
+
+  <h3 style="text-align:center;color:#e74c3c;font-family:'Oswald',sans-serif;font-size:18px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:15px">Juego Base</h3>
+  <div class="links-grid">
+    <div class="link-box"><h3>Akirabox</h3><div class="placeholder">"tu enlace aqui"</div><a href="#">Ir al enlace</a></div>
+    <div class="link-box"><h3>Gofile</h3><div class="placeholder">"tu enlace aqui"</div><a href="#">Ir al enlace</a></div>
+    <div class="link-box"><h3>Rotz</h3><div class="placeholder">"tu enlace aqui"</div><a href="#">Ir al enlace</a></div>
+    <div class="link-box"><h3>Viki</h3><div class="placeholder">"tu enlace aqui"</div><a href="#">Ir al enlace</a></div>
+  </div>
+
+  <h3 style="text-align:center;color:#e74c3c;font-family:'Oswald',sans-serif;font-size:18px;text-transform:uppercase;letter-spacing:1.5px;margin:35px 0 15px">Actualización 1.08 con MOD</h3>
+  <div class="links-grid">
+    <div class="link-box"><h3>Akirabox</h3><div class="placeholder">"tu enlace aqui"</div><a href="#">Ir al enlace</a></div>
+    <div class="link-box"><h3>Gofile</h3><div class="placeholder">"tu enlace aqui"</div><a href="#">Ir al enlace</a></div>
+    <div class="link-box"><h3>Rotz</h3><div class="placeholder">"tu enlace aqui"</div><a href="#">Ir al enlace</a></div>
+    <div class="link-box"><h3>Viki</h3><div class="placeholder">"tu enlace aqui"</div><a href="#">Ir al enlace</a></div>
+  </div>
+
+  <h3 style="text-align:center;color:#e74c3c;font-family:'Oswald',sans-serif;font-size:18px;text-transform:uppercase;letter-spacing:1.5px;margin:35px 0 15px">DLCs</h3>
+  <div class="links-grid" style="max-width:420px;margin:0 auto">
+    <div class="link-box"><h3>Gofile</h3><div class="placeholder">"tu enlace aqui"</div><a href="#">Ir al enlace</a></div>
+    <div class="link-box"><h3>Mediafire</h3><div class="placeholder">"tu enlace aqui"</div><a href="#">Ir al enlace</a></div>
+  </div>
+
+  <!-- PRUEBAS EN DIRECTO -->
+  <div class="section-title">Pruebas en Directo</div>
+  <div class="videos-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px">
+    <a href="https://www.youtube.com/live/pGMfd8DOxe8?si=QP_3gdC2kd_Alp0x" target="_blank" style="display:block;border-radius:10px;overflow:hidden;border:1px solid rgba(192,57,43,.2);transition:all .3s ease;text-decoration:none">
+      <img src="assets/video1-thumb.webp" alt="Prueba en directo 1" style="width:100%;display:block;border-radius:10px 10px 0 0">
+      <div style="background:rgba(20,20,20,.85);padding:12px 16px;text-align:center;font-family:'Oswald',sans-serif;font-size:14px;color:#ccc;text-transform:uppercase;letter-spacing:1px">Ver en YouTube</div>
+    </a>
+    <a href="https://www.youtube.com/live/iqoF9nfiKRQ?si=njHy5STQN9W7uWqf" target="_blank" style="display:block;border-radius:10px;overflow:hidden;border:1px solid rgba(192,57,43,.2);transition:all .3s ease;text-decoration:none">
+      <img src="assets/video2-thumb.webp" alt="Prueba en directo 2" style="width:100%;display:block;border-radius:10px 10px 0 0">
+      <div style="background:rgba(20,20,20,.85);padding:12px 16px;text-align:center;font-family:'Oswald',sans-serif;font-size:14px;color:#ccc;text-transform:uppercase;letter-spacing:1px">Ver en YouTube</div>
+    </a>
+    <a href="https://www.youtube.com/live/WhfuYJCPEbw?si=ttKTmtnKLMF2T78m" target="_blank" style="display:block;border-radius:10px;overflow:hidden;border:1px solid rgba(192,57,43,.2);transition:all .3s ease;text-decoration:none">
+      <img src="assets/video3-thumb.webp" alt="Prueba en directo 3" style="width:100%;display:block;border-radius:10px 10px 0 0">
+      <div style="background:rgba(20,20,20,.85);padding:12px 16px;text-align:center;font-family:'Oswald',sans-serif;font-size:14px;color:#ccc;text-transform:uppercase;letter-spacing:1px">Ver en YouTube</div>
+    </a>
+    <a href="https://www.youtube.com/live/aItryhn6ca4?si=z6jzc8mqp87MTDXU" target="_blank" style="display:block;border-radius:10px;overflow:hidden;border:1px solid rgba(192,57,43,.2);transition:all .3s ease;text-decoration:none">
+      <img src="assets/video4-thumb.webp" alt="Prueba en directo 4" style="width:100%;display:block;border-radius:10px 10px 0 0">
+      <div style="background:rgba(20,20,20,.85);padding:12px 16px;text-align:center;font-family:'Oswald',sans-serif;font-size:14px;color:#ccc;text-transform:uppercase;letter-spacing:1px">Ver en YouTube</div>
+    </a>
+  </div>
+
+  <!-- CREDITOS -->
+  <div class="section-title">Créditos PS4</div>
+  <div class="credits-section">
+    <img src="assets/credits-ps4.webp" alt="Créditos PS4">
+  </div>
+
+  <div class="section-title">Créditos Originales</div>
+  <div class="credits-section">
+    <img src="assets/credits-original.webp" alt="Créditos Originales">
+  </div>
+
+  <div class="cast-list">
+    <p><span class="role">Leon S. Kennedy</span> — Carlo Vazquez (México)</p>
+    <p><span class="role">Claire Redfield</span> — Lucia Suarez (Chile)</p>
+    <p><span class="role">Ada Wong</span> — Claudia Contreras (México)</p>
+    <p><span class="role">Robert Kendo</span> — Gerardo Vazquez (México)</p>
+    <p><span class="role">Marvin Branagh</span> — Rodo Balderas (México)</p>
+    <p><span class="role">Elliot Edward</span> — Luis Leonardo Suarez (México)</p>
+    <p><span class="role">Sherry Birkin</span> — Alohany Sarabia (México)</p>
+    <p><span class="role">Annette Birkin</span> — Sol Figueroa (Argentina)</p>
+    <p><span class="role">William Birkin</span> — Romulo Bernal (Ecuador/Miami)</p>
+    <p><span class="role">Daniel Cortini</span> — Claudio Valenzuela (Chile)</p>
+    <p><span class="role">Emma Kendo y NEST</span> — Itzel Jaramillo (México)</p>
+    <p><span class="role">Ben Bertolucci</span> — Emmanuel Alejandro Gomez (México)</p>
+    <p><span class="role">Brian Irons</span> — Octavio Rojas (México)</p>
+    <p><span class="role">HUNK</span> — Renzo Sagastume (Argentina)</p>
+    <p><span class="role">Camionero del intro</span> — Sergio Crispin (México)</p>
+    <p style="margin-top:15px"><span class="role">Equipo Alfa y voces adicionales:</span></p>
+    <p>Noah Lazcano (México) — Jimmy Arias (Ecuador) — Diego Marticorena (El Salvador) — Samuel Lazcano (México) — Ander Ruiz (Perú) — Martin Mendez (Argentina)</p>
+  </div>
+
+  <div class="footer-links">
+    <a href="https://www.patreon.com/PrimLlamLocYDob" target="_blank">Patreon - Primera Llamada</a>
+    <a href="https://www.nexusmods.com/residentevil22019/mods/1074" target="_blank">NexusMods - Mod Original</a>
+  </div>
+
+  <p class="copyright">Resident Evil 2 MOD Latino PS4 — Primera Llamada</p>
+
+</div>
+
+<script>
+function toggleCollapsible(btn){
+  btn.classList.toggle('active');
+  btn.nextElementSibling.classList.toggle('open');
+}
+</script>
+</body>
+</html>
+
